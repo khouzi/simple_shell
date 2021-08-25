@@ -9,7 +9,7 @@ void cmd_loop(void)
 	char *line;
 	char **args;
 	int status;
-	
+
 	if (isatty(STDIN_FILENO))
 	{
 	do {
