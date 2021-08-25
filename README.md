@@ -8,6 +8,14 @@ environmental variable PATH, with or without their full paths. Sample commands
 that our shell supports include ```ls``` (```/bin/ls```), ```pwd```, ```echo```,
 etc. We've also created the following builtins.
 
+
+
+### Builtins
+* ```exit``` exits shell (```Usage: exit [status]```)
+* ```env``` prints environmental variables (Usage: ```env```)
+* ```help``` shows the help menu or help for specific command (Usage: ```help``` or ```help name value```)
+* ```cd``` changes directories (Usage: ```cd [-][~][path]```)
+
 ### Authorized functions and system calls: <br/>
 	* access (man 2 access) <br/>
 	* chdir (man 2 chdir) <br/>
@@ -39,14 +47,6 @@ etc. We've also created the following builtins.
 	* _exit (man 2 _exit) <br/>
 	* isatty (man 3 isatty) <br/>
 	* fflush (man 3 fflush) <br/>
-
-
-### Builtins
-* ```exit``` exits shell (```Usage: exit [status]```)
-* ```env``` prints environmental variables (Usage: ```env```)
-* ```help``` shows the help menu or help for specific command (Usage: ```help``` or ```help name value```)
-* ```cd``` changes directories (Usage: ```cd [-][~][path]```)
-
 
 ###  Compilation
 
