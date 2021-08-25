@@ -104,3 +104,17 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	close(fd);
 	return (printed);
 }
+/**
+ * free_array - frees an array
+ * @str : double pointer
+ */
+void free_array(char **str)
+{
+	int i;
+
+for (i = 0; str[i] != NULL; i++)
+{
+free(str[i]);
+}
+free(str);
+}
