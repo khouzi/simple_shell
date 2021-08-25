@@ -10,7 +10,7 @@ shelly \- Simple UNIX shell that handles multiple commands
 .I Handles pipes and multiple arguments
 Holberton School Trimester 1 Capstone
 
-The prompt 'S ' will appear on terminal. You enter commands following the prompt. You can handle multiple commands using ';' '&&' '||' specifiers. Once you have entered the commands you execute the commands by pressing 'ENTER' or 'RETURN' on your keyboard.
+The prompt '$ ' will appear on terminal. You enter commands following the prompt. You can handle multiple commands using ';' '&&' '||' specifiers. Once you have entered the commands you execute the commands by pressing 'ENTER' or 'RETURN' on your keyboard.
 
 
 .SH FEATURES
