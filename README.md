@@ -27,7 +27,7 @@ etc. We've also created the following builtins.
 	* free (man 3 free)
 	* stat (__xstat)(man 2 stat)
 	* lstat (__lxstat)(man 2 lstat)
-	* fstat (__fxstat)(man 2 fstat```)
+	* fstat (__fxstat)(man 2 fstat)
 	* getcwd (man 3 getcwd)
 	* getline (man 3 getline)
 	* kill (man 2 kill)
