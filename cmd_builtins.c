@@ -23,7 +23,8 @@ int cmd_cd(char **args)
 				{
 					path = chdir(getenv("HOME"));
 					if (path != 0)
-						perror("Error: "); }
+						perror("Error: ");
+				}
 				else
 				{
 					path = chdir(old_path);
@@ -49,6 +50,7 @@ int cmd_cd(char **args)
 	}
 	return (1);
 }
+
 
 /**
  * cmd_help - function that prints the help for a command
