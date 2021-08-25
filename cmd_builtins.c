@@ -54,7 +54,9 @@ int cmd_cd(char **args)
  * cmd_help - function that prints the help for a command
  * @args: the user input
  * Return: print the help command
+ *
  */
+
 int cmd_help(char **args)
 {
 	if (strcmp(args[0], "help") == 0 && args[1] == NULL)
@@ -119,5 +121,5 @@ int cmd_env(__attribute__((unused)) char **args)
  */
 int cmd_exit(__attribute__((unused)) char **args)
 {
-	return (0);
+	exit(98);
 }
