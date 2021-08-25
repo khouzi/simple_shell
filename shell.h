@@ -35,6 +35,7 @@ int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 size_t _strlen(const char *s);
 char *cmd_read_line(void);
+void free_array(char **str);
 
 
 
