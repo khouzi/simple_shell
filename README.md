@@ -58,7 +58,7 @@ And it has been tested on Ubuntu 14.04 LTS in a VirtualBox on it via Vagrant(2.2
 
 ### Activate the shell
 ```
-(your_terminal)$ ./simple_shell
+(your_terminal)$ ./hsh
 $
 ```
 Sample Usage
