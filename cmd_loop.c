@@ -9,7 +9,9 @@ void cmd_loop(void)
 	char *line;
 	char **args;
 	int status;
-
+	
+	if (isatty(STDIN_FILENO))
+	{
 	do {
 		write(1, "$ ", 2);
 		line = cmd_read_line();
@@ -19,4 +21,5 @@ void cmd_loop(void)
 		free(line);
 		free(args);
 	} while (status);
+	}
 }
