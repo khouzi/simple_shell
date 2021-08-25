@@ -30,7 +30,7 @@ char *builtin_str[] = {
 }
 	for (i = 0; i <= 3; i++)
 {
-	if (_strcmp(args[0], builtin_str[i]) == 0)
+	if (strcmp(args[0], builtin_str[i]) == 0)
 	{
 		return ((*builtin_func[i])(args));
 	}
