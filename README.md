@@ -14,3 +14,12 @@ etc. We've also created the following builtins.
 * ```env``` prints environmental variables (Usage: ```env```)
 * ```help``` shows the help menu or help for specific command (Usage: ```help``` or ```help name value```)
 * ```cd``` changes directories (Usage: ```cd [-][~][path]```)
+
+
+###  Compilation
+
+Our shell will be compiled this way:
+
+`$ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
+
+And it has been tested on Ubuntu 14.04 LTS in a VirtualBox on it via Vagrant(2.2.14) using the Betty style.
