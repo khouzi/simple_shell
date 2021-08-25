@@ -55,3 +55,17 @@ Our shell will be compiled this way:
 `$ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
 
 And it has been tested on Ubuntu 14.04 LTS in a VirtualBox on it via Vagrant(2.2.14) using the Betty style.
+
+### Activate the shell
+```
+(your_terminal)$ ./simple_shell
+$
+```
+Sample Usage
+```
+$ ls -al
+total 4
+-rw-rw-r-- 1 vagrant vagrant   234 Mar 28 19:32 file1.c
+-rw-rw-r-- 1 vagrant vagrant    69 Mar 28 19:32 file2.c
+$ echo "This is a pretty cool!"
+This is pretty cool!
