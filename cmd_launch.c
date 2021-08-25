@@ -48,7 +48,7 @@ int cmd_launch(char **args)
 		{
 			if (execve(args[0], args, NULL) == -1)
 			{
-				perror("no excution");
+				perror("no excution");	
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -58,6 +58,7 @@ int cmd_launch(char **args)
 			return (127);
 		}
 		return(0);
+
 
 	}
 	else
@@ -85,6 +86,8 @@ int cmd_launch(char **args)
 		else
 		{
 			perror("does not work, Retry");
+			free_array(PATH_splitted);
+			free(program_path);
 			return (127);
 		}
 	return (0);
@@ -149,6 +152,7 @@ char *add_command(char *command, char **PATH_splitted)
 		exists_program = stat(final_cmd, &st);
 		if (exists_program == 0)
 		{
+			free_array(PATH_splitted);
 			return (final_cmd);
 		}
 		else
