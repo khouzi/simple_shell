@@ -38,6 +38,7 @@ char **cmd_split_line(char *line)
 	if (!tokens)
 	{
 		perror("allocation error\n");
+		free_array(tokens);
 		exit(EXIT_FAILURE);
 	}
 
@@ -54,6 +55,7 @@ char **cmd_split_line(char *line)
 			if (!tokens)
 			{
 				perror("allocation error\n");
+				free_array(tokens);
 				exit(EXIT_FAILURE);
 			}
 		}
