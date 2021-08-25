@@ -1,0 +1,182 @@
+#include "shell.h"
+
+/**
+* _getenv  - function that return an env variable
+* @env: the wanted environ variable
+* Return: the environ variable
+*/
+char *_getenv(char *env)
+{
+	char **envi_var;
+	size_t i;
+	size_t j;
+
+	envi_var = environ;
+	for (i = 0; envi_var[i] != NULL; i++)
+	{
+		for (j = 0; j < _strlen(env); j++)
+		{
+			if (env[j] != envi_var[i][j])
+			{
+				break;
+			}
+			if (j == _strlen(env) - 1)
+			{
+				return (envi_var[i] + _strlen(env));
+			}
+		}
+	}
+	return (NULL);
+}
+
+/**
+*cmd_launch - executes a program and wait for it to terminate.
+*@args : the command passed by the user
+*Return: 1 if the shell should continue running, 0 if it should terminate
+*/
+int cmd_launch(char **args)
+{
+	pid_t pid;
+	char *PATH = NULL;
+	char **PATH_splitted;
+	char *program_path;
+	int wstatus;
+
+	PATH = getenv("PATH");
+	PATH_splitted = split_input(PATH, ":");
+	program_path = add_command(args[0], PATH_splitted);
+	if (access(program_path, X_OK) == 0)
+	{
+		pid = fork();
+		if (pid == 0)
+		{
+			if (execve(program_path, args, NULL) == -1)
+			{
+				perror("no excution");
+				exit(EXIT_FAILURE);
+			}
+		}
+		waitpid(pid, &wstatus, 0);
+		if (WIFEXITED(wstatus))
+		{
+			return (127);
+		}
+	}
+	else
+	{
+		perror("does not work, Retry");
+		return (127);
+	}
+	return (0);
+}
+
+
+/**
+* split_input - function that splits string into array of string
+* @line: string being passed by user
+* @delim: to separeate the str by.
+* Return:       array that hold the strings splitted
+*                       this splits based on sent delimiters
+*/
+char **split_input(char *line, char *delim)
+{
+	int i;
+	char **words_array;
+	char *word;
+	char *duplicated;
+	int buffsize = 1024;
+
+	duplicated = strdup(line);
+	words_array = malloc(sizeof(char *) * buffsize);
+	if (words_array == NULL)
+	{
+		perror("Malloc error\n");
+		free(words_array);
+		exit(98);
+	}
+	word = strtok(duplicated, delim);
+	for (i = 0; word != NULL; i++)
+	{
+		words_array[i] = strdup(word);
+		word = strtok(NULL, delim);
+	}
+	words_array[i] = NULL;
+	free(duplicated);
+	return (words_array);
+}
+
+
+
+/**
+ * add_command - check if program exists
+ * @command: input taken from user.
+ * @PATH_splitted: PATH env variable splitted by ':'.
+ * Return: the result if the program exists or NULL
+*/
+
+char *add_command(char *command, char **PATH_splitted)
+{
+	char *final_cmd = NULL;
+	int i = 0;
+	int exists_program = 0;
+	struct stat st;
+
+	while (PATH_splitted[i] != NULL)
+	{
+		final_cmd = cmd_gen(PATH_splitted[i], command);
+		i++;
+		exists_program = stat(final_cmd, &st);
+		if (exists_program == 0)
+		{
+			return (final_cmd);
+		}
+		else
+		{
+			free(final_cmd);
+		}
+	}
+	return (NULL);
+}
+
+/**
+ * cmd_gen - concatenate every directory with command
+ * @directory: directory from PATH
+ * @command: user command.
+ * Return: directory + command
+*/
+char *cmd_gen(char *directory, char *command)
+{
+	int i = 0;
+	int j = 0;
+	int command_len = 0;
+	int directory_len = 0;
+	int total_len = 0;
+	char *final_cmd = NULL;
+
+	command_len = strlen(command);
+	directory_len = strlen(directory);
+	total_len = directory_len + command_len + 2;
+	final_cmd = malloc(sizeof(char) * total_len);
+	if (final_cmd == NULL)
+	{
+		perror("Malloc error\n");
+		free(final_cmd);
+		exit(98);
+	}
+	while (j < total_len)
+	{
+		for (i = 0; i <= directory_len && directory[i] != '\0'; i++)
+		{
+			final_cmd[i] = directory[i];
+			j++;
+		}
+		final_cmd[j] = '/';
+		j++;
+		for (i = 0; i <= command_len; i++)
+		{
+			final_cmd[j] = command[i];
+			j++;
+		}
+	}
+	return (final_cmd);
+}
