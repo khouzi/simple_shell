@@ -70,6 +70,15 @@ total 4
 $ echo "This is a pretty cool!"
 This is pretty cool!
 ```
+In non-interactive mode, the shell is run from commands being piped in. The subshell
+is only opened as the command is carried out and closes at the completion of the command.
+
+echo "ls -l" | ./hsh
+```
+total 4
+-rw-rw-r-- 1 vagrant vagrant   234 Mar 28 19:32 file1.c
+-rw-rw-r-- 1 vagrant vagrant    69 Mar 28 19:32 file2.c
+```
 
 ## Authors :writing_hand:
 
