@@ -42,15 +42,11 @@ int cmd_launch(char **args)
 	char *program_path;
 	int wstatus;
 
-	PATH = getenv("PATH");
-	PATH_splitted = split_input(PATH, ":");
-	program_path = add_command(args[0], PATH_splitted);
-	if (access(program_path, X_OK) == 0)
-	{
-		pid = fork();
-		if (pid == 0)
+	if (access(args[0], X_OK) == 0)
+	{	pid = fork();
+		if (pid ==  0)
 		{
-			if (execve(program_path, args, NULL) == -1)
+			if (execve(args[0], args, NULL) == -1)
 			{
 				perror("no excution");
 				exit(EXIT_FAILURE);
@@ -61,13 +57,38 @@ int cmd_launch(char **args)
 		{
 			return (127);
 		}
+		return(0);
+
 	}
 	else
 	{
-		perror("does not work, Retry");
-		return (127);
-	}
+	PATH = getenv("PATH");
+	PATH_splitted = split_input(PATH, ":");
+	program_path = add_command(args[0], PATH_splitted);
+		if (access(program_path, X_OK) == 0)
+		{
+			pid = fork();
+				if (pid == 0)
+					{
+						if (execve(program_path, args, NULL) == -1)
+							{
+								perror("no excution");
+								exit(EXIT_FAILURE);
+							}
+					}
+			waitpid(pid, &wstatus, 0);
+			if (WIFEXITED(wstatus))
+				{
+					return (127);
+				}
+		}
+		else
+		{
+			perror("does not work, Retry");
+			return (127);
+		}
 	return (0);
+	}
 }
 
 
@@ -91,7 +112,7 @@ char **split_input(char *line, char *delim)
 	if (words_array == NULL)
 	{
 		perror("Malloc error\n");
-		free(words_array);
+		free_array(words_array);
 		exit(98);
 	}
 	word = strtok(duplicated, delim);
