@@ -69,3 +69,11 @@ total 4
 -rw-rw-r-- 1 vagrant vagrant    69 Mar 28 19:32 file2.c
 $ echo "This is a pretty cool!"
 This is pretty cool!
+
+## Authors :writing_hand:
+
+https://github.com/khouzi<br/>
+https://github.com/youssefboussaid<br/>
+
+### License.
+This project is licensed under the [Holberton School](https://www.holbertonschool.com/tn/en/ "Holberton School") License.
