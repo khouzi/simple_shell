@@ -2,7 +2,7 @@
 
 
 .SH NAME
-cshell \- Simple UNIX shell that handles multiple commands
+shelly \- Simple UNIX shell that handles multiple commands
 
 
 .SH SYNOPSIS
@@ -10,20 +10,7 @@ cshell \- Simple UNIX shell that handles multiple commands
 .I Handles pipes and multiple arguments
 Holberton School Trimester 1 Capstone
 
-
-.SH DESCRIPTION
-
-
-cshell is a watered down version of Ken Thompson's first UNIX shell. It is specifically designed for UNIX environments. This version handles some advanced features such as piping and options (some of them).
-
-
-.SH INVOCATION
-.br
-.\&
-.RS
-\&> ./cshell
-
-The prompt '> ' will appear on terminal. You enter commands following the prompt. You can handle multiple commands using ';' '&&' '||' specifiers. Once you have entered the commands you execute the commands by pressing 'ENTER' or 'RETURN' on your keyboard.
+The prompt '$ ' will appear on terminal. You enter commands following the prompt. You can handle multiple commands using ';' '&&' '||' specifiers. Once you have entered the commands you execute the commands by pressing 'ENTER' or 'RETURN' on your keyboard.
 
 
 .SH FEATURES
@@ -31,9 +18,11 @@ The prompt '> ' will appear on terminal. You enter commands following the prompt
 
 
 .SH BUILTINS
-The following are supported by cshell
-.br
-.br
+The following are supported by shelly
+.br help
+.br env
+.br exit
+.br cd
 
 .SH "AUTHORS"
 khouzem boussaid and youssef boussaid.
