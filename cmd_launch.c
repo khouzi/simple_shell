@@ -87,11 +87,11 @@ int cmd_launch(char **args)
 		{
 			perror("does not work, Retry");
 			free_array(PATH_splitted);
-			free(program_path);
 			return (127);
 		}
 	return (0);
 	}
+	
 }
 
 
