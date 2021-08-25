@@ -19,6 +19,7 @@ char *cmd_read_line(void)
 			exit(EXIT_SUCCESS);
 		}
 
+
 		return (line);
 	}
 }
@@ -39,27 +40,14 @@ char **cmd_split_line(char *line)
 	{
 		perror("allocation error\n");
 		free_array(tokens);
+		free(line);
 		exit(EXIT_FAILURE);
 	}
-
 	token = strtok(line, cmd_TOK_DELIM);
 	while (token != NULL)
 	{
 		tokens[position] = token;
 		position++;
-
-		if (position >= bufsize)
-		{
-			bufsize += cmd_TOK_BUFSIZE;
-			tokens = realloc(tokens, bufsize * sizeof(char *));
-			if (!tokens)
-			{
-				perror("allocation error\n");
-				free_array(tokens);
-				exit(EXIT_FAILURE);
-			}
-		}
-
 		token = strtok(NULL, cmd_TOK_DELIM);
 	}
 	tokens[position] = NULL;
