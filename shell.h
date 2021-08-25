@@ -18,6 +18,7 @@
 #define cmd_TOK_BUFSIZE 64
 #define cmd_TOK_DELIM " \t\r\n\a"
 
+void sig_handler(int signum);
 int cmd_cd(char **args);
 int cmd_help(char **args);
 int cmd_exit(char **args);
