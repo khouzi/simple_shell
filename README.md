@@ -76,4 +76,4 @@ https://github.com/khouzi<br/>
 https://github.com/youssefboussaid<br/>
 
 ### License.
-This project is licensed under the [Holberton School](https://www.holbertonschool.com/tn/en/ "Holberton School") License.
+This project is licensed under the [Holberton school](https://www.holbertonschool.com/tn/en/ "Holberton school") License.
