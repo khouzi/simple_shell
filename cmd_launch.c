@@ -1,35 +1,6 @@
 #include "shell.h"
 
 /**
-* _getenv  - function that return an env variable
-* @env: the wanted environ variable
-* Return: the environ variable
-*/
-char *_getenv(char *env)
-{
-	char **envi_var;
-	size_t i;
-	size_t j;
-
-	envi_var = environ;
-	for (i = 0; envi_var[i] != NULL; i++)
-	{
-		for (j = 0; j < _strlen(env); j++)
-		{
-			if (env[j] != envi_var[i][j])
-			{
-				break;
-			}
-			if (j == _strlen(env) - 1)
-			{
-				return (envi_var[i] + _strlen(env));
-			}
-		}
-	}
-	return (NULL);
-}
-
-/**
 *cmd_launch - executes a program and wait for it to terminate.
 *@args : the command passed by the user
 *Return: 1 if the shell should continue running, 0 if it should terminate
@@ -66,6 +37,7 @@ int cmd_launch(char **args)
 	PATH = getenv("PATH");
 	PATH_splitted = split_input(PATH, ":");
 	program_path = add_command(args[0], PATH_splitted);
+
 		if (access(program_path, X_OK) == 0)
 		{
 			pid = fork();
