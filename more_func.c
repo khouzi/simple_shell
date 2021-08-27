@@ -1,3 +1,5 @@
+include "shell.h"
+
 int cmd_store(char *line)
 {
   char *filename = "history;
