@@ -123,5 +123,6 @@ int cmd_env(__attribute__((unused)) char **args)
  */
 int cmd_exit(__attribute__((unused)) char **args)
 {
+	free(args);
 	exit(98);
 }
