@@ -6,20 +6,24 @@
  */
 void cmd_loop(void)
 {
-	char *line;
-	char **args;
-	int status;
+        char *file = "history";
+        char *line;
+        char **args;
+        int status;
 
-	if (isatty(STDIN_FILENO))
-	{
-	do {
-		write(1, "$ ", 2);
-		line = cmd_read_line();
-		args = cmd_split_line(line);
-		status = cmd_execute(args);
+        if (isatty(STDIN_FILENO))
+        {
+                if(file)
+                        remove(file);
+        do {
+                write(1, "$ ", 2);
+                line = cmd_read_line();
+                cmd_store(line);
+                args = cmd_split_line(line);
+                status = cmd_execute(args);
 
-		free(line);
-		free(args);
-	} while (status);
-	}
+                free(line);
+                free(args);
+        } while (status);
+        }
 }
