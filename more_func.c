@@ -2,7 +2,7 @@
 
 int cmd_store(char *line)
 {
-  char *filename = "history;
+  char *filename = "history";
 	size_t i = 0;
 	ssize_t writecount;
 	int fd;
