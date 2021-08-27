@@ -10,7 +10,7 @@ int cmd_store(char *line)
 	if (filename == NULL)
 		return (-1);
 	if (line == NULL)
-		return (1);
+		return (-1);
   fd = open(filename, O_WRONLY | O_CREAT | O_APPEND, 0600);
 	if (fd == -1)
 		return (-1);
