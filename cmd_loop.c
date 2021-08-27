@@ -6,16 +6,13 @@
  */
 void cmd_loop(void)
 {
-        char *file = "history";
         char *line;
         char **args;
         int status;
 
         if (isatty(STDIN_FILENO))
         {
-                if(file)
-                        remove(file);
-        do {
+                do {
                 write(1, "$ ", 2);
                 line = cmd_read_line();
                 cmd_store(line);
